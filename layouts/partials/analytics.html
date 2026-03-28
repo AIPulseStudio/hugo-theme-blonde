@@ -1,5 +1,16 @@
 {{ if not hugo.IsServer }}
-  {{ with .Site.Config.Services.GoogleAnalytics.ID }}
+  {{/* 支持三种配置方式：根级别 googleAnalytics、[params] 下的 googleAnalytics、或 [services.googleAnalytics] */}}
+  {{ $gaID := .Site.Params.googleAnalytics }}
+  {{ if not $gaID }}
+    {{/* Hugo 0.112.0+ 将根级别的自定义变量放入 Site.Params 中，但为了安全起见也检查旧的 .Site.GoogleAnalytics（如果存在） */}}
+    {{ $gaID = site.Config.Services.GoogleAnalytics.ID }}
+  {{ end }}
+  {{ if not $gaID }}
+    {{/* 兼容直接在根目录配置（部分 Hugo 版本会保留为根级变量或放在 Site.Params 下） */}}
+    {{ $gaID = index .Site.Params "googleanalytics" | default (index .Site.Params "googleAnalytics") }}
+  {{ end }}
+  
+  {{ with $gaID }}
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
       async
