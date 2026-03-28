@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="{{ .Site.LanguageCode | default .Site.Language.Lang }}">
   {{- partial "head.html" . -}}
+  {{- partial "config-defaults.html" . -}}
   <body class="font-sans">
     <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800">
       {{- partial "header.html" . -}}

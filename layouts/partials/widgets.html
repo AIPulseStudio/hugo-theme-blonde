@@ -1,12 +1,14 @@
+{{- $widgetsMobile := .Site.Params.widgets.mobile | default false -}}
+{{- $widgetsList := .Site.Params.widgets.widgets | default (slice "search" "archive" "category" "tags" "social" "recent") -}}
 <div
-  class="{{ if .Site.Params.widgets.mobile }}
+  class="{{ if $widgetsMobile }}
     col-span-3 lg:col-span-1
   {{ else }}
     hidden lg:block lg:col-span-1
   {{ end }}"
 >
   {{ $root := . }}
-  {{ with (default .Site.Params.widgets.widgets .Params.widgets) -}}
+  {{ with (default $widgetsList .Params.widgets) -}}
     {{ range $widget := . }}
       {{ $p := printf "widgets/%s.html" $widget }}
       {{ partial $p $root }}

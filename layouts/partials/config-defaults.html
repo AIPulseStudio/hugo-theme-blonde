@@ -1,0 +1,68 @@
+{{/*
+  Set default values for theme configuration
+  This partial should be included in baseof.html
+*/}}
+
+{{/* Main sections for content */}}
+{{- if not .Site.Params.mainSections -}}
+  {{- .Site.Params.Set "mainSections" (slice "post") -}}
+{{- end -}}
+
+{{/* Paginator pages */}}
+{{- if not .Site.Params.paginator_pages -}}
+  {{- .Site.Params.Set "paginator_pages" 5 -}}
+{{- end -}}
+
+{{/* Base color */}}
+{{- if not .Site.Params.base_color -}}
+  {{- .Site.Params.Set "base_color" "bg-gray-100" -}}
+{{- end -}}
+
+{{/* Dark mode */}}
+{{- if not .Site.Params.darkmode -}}
+  {{- .Site.Params.Set "darkmode" "light" -}}
+{{- end -}}
+
+{{/* Widgets display */}}
+{{- if not .Site.Params.widgets -}}
+  {{- .Site.Params.Set "widgets" (dict "display" true "mobile" false "widgets" (slice "search" "archive" "category" "tags" "social" "recent")) -}}
+{{- else -}}
+  {{- if not .Site.Params.widgets.display -}}
+    {{- .Site.Params.widgets.Set "display" true -}}
+  {{- end -}}
+  {{- if not .Site.Params.widgets.mobile -}}
+    {{- .Site.Params.widgets.Set "mobile" false -}}
+  {{- end -}}
+  {{- if not .Site.Params.widgets.widgets -}}
+    {{- .Site.Params.widgets.Set "widgets" (slice "search" "archive" "category" "tags" "social" "recent") -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* Share */}}
+{{- if not .Site.Params.share -}}
+  {{- .Site.Params.Set "share" (dict "enable" false "services" (slice)) -}}
+{{- else -}}
+  {{- if not .Site.Params.share.enable -}}
+    {{- .Site.Params.share.Set "enable" false -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* Post settings */}}
+{{- if not .Site.Params.post -}}
+  {{- .Site.Params.Set "post" (dict "thumbnail" true "noimage" true "thumbnail_height" "lg:h-44" "thumbnail_width" "lg:w-auto" "description" "130") -}}
+{{- end -}}
+
+{{/* Tags limit */}}
+{{- if not .Site.Params.tagsLimit -}}
+  {{- .Site.Params.Set "tagsLimit" 20 -}}
+{{- end -}}
+
+{{/* Recent posts limit */}}
+{{- if not .Site.Params.recentLimit -}}
+  {{- .Site.Params.Set "recentLimit" 5 -}}
+{{- end -}}
+
+{{/* Archive dropdown */}}
+{{- if not .Site.Params.archive_dropdown -}}
+  {{- .Site.Params.Set "archive_dropdown" "false" -}}
+{{- end -}}

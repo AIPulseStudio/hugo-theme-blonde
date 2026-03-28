@@ -1,13 +1,14 @@
 {{ define "header_css" }}{{ end }}
 
 {{ define "main" }}
+{{- $paginatorSize := .Site.Params.paginator_pages | default 5 -}}
 <div class="grid grid-cols-3 gap-4">
   {{ if .Site.Params.widgets.display }}
   <main class="col-span-3 lg:col-span-2 mb-3">
   {{ else }}
   <main class="col-span-3 mb-3">
   {{ end }}
-    {{.Scratch.Set "Paginator" (.Paginate (where .Site.RegularPages "Type" "in" site.Params.mainSections) (.Site.Params.paginator_pages) )}}
+    {{.Scratch.Set "Paginator" (.Paginate (where .Site.RegularPages "Type" "in" site.Params.mainSections) $paginatorSize)}}
     {{$paginator:=(.Scratch.Get "Paginator")}}
     {{ range $paginator.Pages }}
     <a href="{{.RelPermalink}}">
