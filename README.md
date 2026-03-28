@@ -52,6 +52,30 @@ Updating theme:
 git submodule update --remote --merge
 ```
 
+### Method 3 (Hugo Module)
+
+Initialize your Hugo site as a module:
+
+```bash
+hugo mod init github.com/yourusername/yoursite
+```
+
+Add this theme to your `hugo.toml`:
+
+```toml
+[module]
+  [[module.imports]]
+    path = "github.com/AIPulseStudio/hugo-theme-blonde"
+```
+
+Then get the module:
+
+```bash
+hugo mod get github.com/AIPulseStudio/hugo-theme-blonde
+```
+
+For more information about Hugo Modules, see the [official documentation](https://gohugo.io/hugo-modules/).
+
 ### Install dependencies
 
 Copy at least the following files from `themes/Blonde/exampleSite` to the root folder of your site.

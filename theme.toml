@@ -1,9 +1,9 @@
 name = "Blonde"
 license = "MIT"
-licenselink = "https://github.com/opera7133/Blonde/blob/master/LICENSE"
+licenselink = "https://github.com/AIPulseStudio/hugo-theme-blonde/blob/main/LICENSE"
 description = "Blonde, A simple theme using Tailwind CSS"
 
-homepage = "https://github.com/opera7133/Blonde"
+homepage = "https://github.com/AIPulseStudio/hugo-theme-blonde"
 
 demosite = "https://blonde.pages.dev"
 
