@@ -76,6 +76,33 @@ hugo mod get github.com/AIPulseStudio/hugo-theme-blonde
 
 For more information about Hugo Modules, see the [official documentation](https://gohugo.io/hugo-modules/).
 
+### Install dependencies (Required for Hugo Module)
+
+When using Hugo Module, you need to add TailwindCSS configuration to your project:
+
+**1. Create `package.json` in your project root:**
+
+```bash
+echo '{"devDependencies":{"@tailwindcss/cli":"^4.1.16","@tailwindcss/typography":"^0.5.19","tailwindcss":"^4.1.16"}}' > package.json
+```
+
+**2. Create `postcss.config.js` in your project root:**
+
+```js
+export default {
+  plugins: {
+    '@tailwindcss/cli': {},
+    '@tailwindcss/typography': {},
+  },
+}
+```
+
+**3. Install dependencies:**
+
+```bash
+npm install
+```
+
 ### Install dependencies
 
 Copy at least the following files from `themes/Blonde/exampleSite` to the root folder of your site.
