@@ -1,9 +1,9 @@
 {{ define "header_css" }}{{ end }}
 
 {{ define "main" }}
-{{- $widgetsDisplay := .Site.Params.widgets.display | default true -}}
+{{- $wDisplay := .Site.Params.widgets.display | default true -}}
 <div class="grid grid-cols-3 gap-4">
-  {{ if $widgetsDisplay }}
+  {{ if $wDisplay }}
   <main class="col-span-3 lg:col-span-2 mb-3">
   {{ else }}
   <main class="col-span-3 mb-3">
@@ -28,7 +28,7 @@
     {{ end }}
     {{ partial "paginator.html" . }}
   </main>
-  {{ if $widgetsDisplay }}
+  {{ if $wDisplay }}
     {{ partial "widgets.html" . }}
   {{ end }}
 </div>

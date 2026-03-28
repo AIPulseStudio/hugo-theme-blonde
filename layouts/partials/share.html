@@ -1,8 +1,15 @@
-{{- if .Site.Params.share.enable -}}
+{{- $shareEnable := false -}}
+{{- if .Site.Params.share -}}
+  {{- $shareEnable = .Site.Params.share.enable | default false -}}
+{{- end -}}
+{{- if $shareEnable -}}
   {{- $permalink := .Permalink -}}
   {{- $title := .Title -}}
   {{- $allServices := slice "twitter" "facebook" "line" "linkedin" "whatsapp" "mail" "copy" -}}
-  {{- $services := default $allServices .Site.Params.share.services -}}
+  {{- $services := $allServices -}}
+  {{- if .Site.Params.share.services -}}
+    {{- $services = .Site.Params.share.services -}}
+  {{- end -}}
   <div class="bg-white dark:bg-warmgray-900 rounded-xl shadow-sm p-5 my-4">
     <p
       class="text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-3"

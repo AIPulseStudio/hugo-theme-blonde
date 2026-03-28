@@ -2,7 +2,13 @@
 
 {{ define "main" }}
 <div class="grid grid-cols-3 gap-4">
-  {{ if .Site.Params.widgets.display }}
+  {{- $wDisplay := true -}}
+{{- if isset .Site.Params "widgets" -}}
+  {{- if isset .Site.Params.widgets "display" -}}
+    {{- $wDisplay = .Site.Params.widgets.display -}}
+  {{- end -}}
+{{- end -}}
+{{ if $wDisplay }}
   <main class="col-span-3 lg:col-span-2">
   {{ else }}
   <main class="col-span-3">
@@ -12,7 +18,13 @@
       <div class="content prose md:prose-base lg:prose-lg max-w-none dark:prose-invert py-1">{{.Content}}</div>
     </article>
   </main>
-  {{ if .Site.Params.widgets.display }}
+  {{- $wDisplay := true -}}
+{{- if isset .Site.Params "widgets" -}}
+  {{- if isset .Site.Params.widgets "display" -}}
+    {{- $wDisplay = .Site.Params.widgets.display -}}
+  {{- end -}}
+{{- end -}}
+{{ if $wDisplay }}
     {{ partial "widgets.html" . }}
   {{ end }}
 </div>

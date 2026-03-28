@@ -3,7 +3,13 @@
 {{ define "main" }}
 {{- $paginatorSize := .Site.Params.paginator_pages | default 5 -}}
 <div class="grid grid-cols-3 gap-4">
-  {{ if .Site.Params.widgets.display }}
+  {{- $wDisplay := true -}}
+{{- if isset .Site.Params "widgets" -}}
+  {{- if isset .Site.Params.widgets "display" -}}
+    {{- $wDisplay = .Site.Params.widgets.display -}}
+  {{- end -}}
+{{- end -}}
+{{ if $wDisplay }}
   <main class="col-span-3 lg:col-span-2 mb-3">
   {{ else }}
   <main class="col-span-3 mb-3">
@@ -17,7 +23,13 @@
     {{ end }}
     {{ partial "paginator.html" . }}
   </main>
-  {{ if .Site.Params.widgets.display }}
+  {{- $wDisplay := true -}}
+{{- if isset .Site.Params "widgets" -}}
+  {{- if isset .Site.Params.widgets "display" -}}
+    {{- $wDisplay = .Site.Params.widgets.display -}}
+  {{- end -}}
+{{- end -}}
+{{ if $wDisplay }}
     {{ partial "widgets.html" . }}
   {{ end }}
 </div>

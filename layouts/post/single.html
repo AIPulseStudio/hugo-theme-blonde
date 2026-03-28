@@ -2,7 +2,13 @@
 
 {{ define "main" }}
 <div class="grid grid-cols-3 gap-4">
-  {{ if .Site.Params.widgets.display }}
+  {{- $wDisplay := true -}}
+{{- if isset .Site.Params "widgets" -}}
+  {{- if isset .Site.Params.widgets "display" -}}
+    {{- $wDisplay = .Site.Params.widgets.display -}}
+  {{- end -}}
+{{- end -}}
+{{ if $wDisplay }}
   <main class="col-span-3 lg:col-span-2 dark:text-white">
   {{ else }}
   <main class="col-span-3 dark:text-white">
@@ -81,7 +87,13 @@
     </div>
     {{ partial "comments.html" . }}
   </main>
-  {{ if .Site.Params.widgets.display }}
+  {{- $wDisplay := true -}}
+{{- if isset .Site.Params "widgets" -}}
+  {{- if isset .Site.Params.widgets "display" -}}
+    {{- $wDisplay = .Site.Params.widgets.display -}}
+  {{- end -}}
+{{- end -}}
+{{ if $wDisplay }}
   {{ partial "widgets.html" . }}
   {{ end }}
 </div>
